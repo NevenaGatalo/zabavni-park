@@ -1,0 +1,35 @@
+# depslib dependency file v1.0
+1586952789 source:c:\users\servis\desktop\programiranje\projekat_programiranje\main.cpp
+	<iostream>
+	"karta.hpp"
+	"zabavni_park.hpp"
+	"profit.hpp"
+	"vreme.hpp"
+	"osoba.hpp"
+	"posetilac.hpp"
+	"zaposleni.hpp"
+
+1586791341 c:\users\servis\desktop\programiranje\projekat_programiranje\karta.hpp
+
+1586951421 c:\users\servis\desktop\programiranje\projekat_programiranje\hrana.hpp
+
+1586800313 c:\users\servis\desktop\programiranje\projekat_programiranje\voznje.hpp
+	"vreme.hpp"
+
+1586800245 c:\users\servis\desktop\programiranje\projekat_programiranje\sou_program.hpp
+
+1586953865 c:\users\servis\desktop\programiranje\projekat_programiranje\profit.hpp
+
+1586800245 c:\users\servis\desktop\programiranje\projekat_programiranje\vreme.hpp
+
+1586879832 c:\users\servis\desktop\programiranje\projekat_programiranje\osoba.hpp
+
+1586952392 c:\users\servis\desktop\programiranje\projekat_programiranje\posetilac.hpp
+
+1586953865 c:\users\servis\desktop\programiranje\projekat_programiranje\zaposleni.hpp
+
+1586954238 c:\users\servis\desktop\programiranje\projekat_programiranje\zabavni_park.hpp
+	"voznje.hpp"
+	"hrana.hpp"
+	"sou_program.hpp"
+
