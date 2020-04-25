@@ -41,6 +41,7 @@
 		<Unit filename="sou_program.hpp" />
 		<Unit filename="voznje.hpp" />
 		<Unit filename="vreme.hpp" />
+		<Unit filename="zabavni_park.hpp" />
 		<Unit filename="zaposleni.hpp" />
 		<Extensions>
 			<code_completion />

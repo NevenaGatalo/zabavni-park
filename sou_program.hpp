@@ -4,22 +4,22 @@
 enum TipPrograma {lutke, madjionicar, predstava};
 typedef struct
 {
-  unsigned int dan;
-  unsigned int mesec;
-  unsigned int godina;
+  unsigned dan;
+  unsigned mesec;
+  unsigned godina;
 }Datum;
 
 typedef struct
 {
-    unsigned int sat;
-    unsigned int minuti;
+    unsigned sat;
+    unsigned minuti;
 }VReme;
 
 class Sou_program
 {
 private:
-    unsigned int brLjudi;
-    unsigned int brIzvodjaca;
+    unsigned brLjudi;
+    unsigned brIzvodjaca;
     TipPrograma tip;
     VReme vreme;
     Datum datum;

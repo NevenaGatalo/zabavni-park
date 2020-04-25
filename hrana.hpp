@@ -9,7 +9,7 @@ class Hrana
 {
 private:
     string naziv;
-    unsigned int cena;
+    unsigned cena;
     TipHrane tip;
     bool zdravo;
     bool slano;

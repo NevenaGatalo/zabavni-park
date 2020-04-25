@@ -5,8 +5,8 @@
 #include"sou_program.hpp"
 typedef struct
 {
-    unsigned int pocetak;
-    unsigned int kraj;
+    unsigned pocetak;
+    unsigned kraj;
 }RaadnoVreme;
 class ZabavniPark
 {

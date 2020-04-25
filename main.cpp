@@ -10,5 +10,6 @@ using namespace std;
 
 int main()
 {
+    Voznja v1;
     return 0;
 }
