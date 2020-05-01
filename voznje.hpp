@@ -6,32 +6,34 @@ enum TipVoznje {osmica, tvister, bumerang, katapult, leptir, pereca, tocak};
 class Voznja
 {
 private:
+    Vreme vreme;
     double visinaLjudi;
     unsigned ljudi;
     bool radi;
     unsigned visinaVoznje;
     double brzina;
-    Vreme vreme;
 public:
-    Voznja()
+    Voznja
+    (
+     GD doba=leto,
+     TipVremena tip=suncano,
+     double visinaLjudi=1.5,
+     unsigned ljudi=25,
+     bool radi=1,
+     unsigned visinaVoznje=70,
+     double brzina=80
+     ):vreme(doba, tip){}
+
+    Voznja(const Voznja &v)
     {
-        visinaLjudi=1.5;
-        ljudi=25;
-        radi=true;
-        visinaVoznje=70;
-        brzina=80;
-        vreme.setDoba(leto);
-        vreme.setTip(suncano);
-    }
-    Voznja(double v, unsigned lj, bool r, unsigned vv, double b, GD d, TipVremena t)
-    {
-        visinaLjudi=v;
-        ljudi=lj;
-        radi=r;
-        visinaVoznje=vv;
-        brzina=b;
-        vreme.setDoba(d);
-        vreme.setTip(t);
+        vreme=v.vreme;
+        visinaLjudi=v.visinaLjudi;
+        ljudi=v.ljudi;
+        radi=v.radi;
+        visinaVoznje=v.visinaVoznje;
+        brzina=v.brzina;
+
+
     }
 };
 

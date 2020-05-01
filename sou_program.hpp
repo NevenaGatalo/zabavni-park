@@ -23,6 +23,8 @@ private:
     TipPrograma tip;
     VReme vreme;
     Datum datum;
+public:
+
 
 };
 

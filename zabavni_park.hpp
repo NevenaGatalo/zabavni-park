@@ -14,6 +14,8 @@ private:
     bool otvoren;
     Vreme vreme;
     RaadnoVreme radnoVreme;
+public:
+
 
 };
 

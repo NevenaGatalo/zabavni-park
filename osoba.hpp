@@ -26,6 +26,7 @@ public:
         prezime=o1.prezime;
         godine=o1.godine;
     }
+    int getGodine()const{return godine;}
 };
 
 #endif // OSOBA_HPP_INCLUDED

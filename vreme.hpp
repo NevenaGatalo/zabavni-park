@@ -8,6 +8,12 @@ private:
     GD doba;
     TipVremena tip;
 public:
+    Vreme()
+    {
+        doba=leto;
+        tip=suncano;
+    }
+    Vreme(GD d, TipVremena t){doba=d; tip=t;}
     void setDoba(GD a){doba=a;}
     void setTip(TipVremena b){tip=b;}
 };
