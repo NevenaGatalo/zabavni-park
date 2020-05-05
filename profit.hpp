@@ -8,10 +8,10 @@ private:
     double kolicina;
     static double ukupnaKol;
 public:
-    bool promeni_profit()
+    /*bool promeni_profit()
     {
 
-    }
+    }*/
 
 };
 double Profit :: ukupnaKol=0;

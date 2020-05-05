@@ -37,6 +37,7 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="osoba.hpp" />
 		<Unit filename="posetilac.hpp" />
+		<Unit filename="posetioci.txt" />
 		<Unit filename="profit.hpp" />
 		<Unit filename="sou_program.hpp" />
 		<Unit filename="voznje.hpp" />

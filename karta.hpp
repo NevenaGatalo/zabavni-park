@@ -1,6 +1,5 @@
 #ifndef KARTA_HPP_INCLUDED
 #define KARTA_HPP_INCLUDED
-#include "posetilac.hpp"
 enum TipKarte {decija, odrasla, porodicna};
 
 class Karta
@@ -16,8 +15,6 @@ public:
     void setTip(TipKarte t){tip=t;}
     void setVip(bool v){vip=v;}
     void setCena(unsigned c){cena=c;}
-
-
 private:
 
 };

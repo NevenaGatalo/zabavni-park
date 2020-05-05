@@ -25,7 +25,6 @@ private:
     Datum datum;
 public:
 
-
 };
 
 #endif // SOU_PROGRAM_HPP_INCLUDED

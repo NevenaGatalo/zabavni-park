@@ -18,7 +18,7 @@ public:
     Zaposleni(string i, string pr, int g, int p, TipZaposlenog t, RadnoVreme r):Osoba(i, pr,g), plata(p), tip(t){rv=r;}
     Zaposleni(const Zaposleni &z):Osoba(z), plata(z.plata), tip(z.tip), rv(z.rv){}
 
-    bool dodeli_kartu(Posetilac &p)
+   /* bool dodeli_kartu(Posetilac &p)
     {
         if(p.getGodine<16)
         {
@@ -37,9 +37,15 @@ public:
     bool prodaj_hranu(Posetilac &p)
     {
 
+    }*/
+    Zaposleni(Osoba &o, TipZaposlenog tipz, unsigned p, unsigned k)
+    {
+        plata=5000;
+        tip=tipz;
+        rv.pocetak=p;
+        rv.kraj=k;
+
     }
-
-
 };
 
 #endif // ZAPOSLENI_HPP_INCLUDED

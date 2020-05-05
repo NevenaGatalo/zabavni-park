@@ -1,7 +1,5 @@
 #ifndef HRANA_HPP_INCLUDED
 #define HRANA_HPP_INCLUDED
-
-
 using namespace std;
 enum TipHrane {pice, hrana};
 
