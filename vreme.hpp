@@ -4,7 +4,7 @@ enum GD {prolece, leto, jesen, zima};
 enum TipVremena {suncano, kisovito, vetrovito, oblacno, oluja};
 class Vreme
 {
-private:
+protected:
     GD doba;
     TipVremena tip;
 public:

@@ -39,7 +39,8 @@ public:
 
     double getVisina()const{return visina;}
     Karta getKarta()const{return karta;}
-    void setKarta(Karta k){karta=k;}
+    int getID()const{return id;}
+    //void setKarta(TipKarte t, bool v, unsigned c){karta.getTip()=t; karta.getVip()=v; karta.getCena()=c;}
 
     void citajFajl(string nazivFajla){
     cout<<"\tU fajlu pise: "<<endl;
@@ -47,7 +48,7 @@ public:
     cout<<endl<<endl;
     }
 
-
+    friend ostream& operator<<(ostream& out, const Posetilac& p);
 };
 
 #endif // POSETILAC_HPP_INCLUDED

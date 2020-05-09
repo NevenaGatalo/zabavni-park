@@ -8,6 +8,7 @@ private:
     double kolicina;
     static double ukupnaKol;
 public:
+    static double getUkupnaKol(){return ukupnaKol;}
     /*bool promeni_profit()
     {
 

@@ -18,23 +18,27 @@ public:
     Zaposleni(string i, string pr, int g, int p, TipZaposlenog t, RadnoVreme r):Osoba(i, pr,g), plata(p), tip(t){rv=r;}
     Zaposleni(const Zaposleni &z):Osoba(z), plata(z.plata), tip(z.tip), rv(z.rv){}
 
-   /* bool dodeli_kartu(Posetilac &p)
+    bool dodeli_kartu(Posetilac &p, Karta &k)
     {
-        if(p.getGodine<16)
+        if(p.getGodine()<16)
         {
-            p.setKarta(decija, false, 300);
+            k.setTip(decija);
+            k.setVip(false);
+            k.setCena(300);
             return true;
         }
-        if else(p.getGodine>16)
+        else if(p.getGodine()>16)
         {
-            p.setKarta(odrasla, false, 600);
+            k.setTip(odrasla);
+            k.setVip(false);
+            k.setCena(600);
             return true;
         }
 
         return false;
     }
 
-    bool prodaj_hranu(Posetilac &p)
+    /*bool prodaj_hranu(Posetilac &p)
     {
 
     }*/
@@ -45,6 +49,20 @@ public:
         rv.pocetak=p;
         rv.kraj=k;
 
+    }
+    TipZaposlenog getTip()const {return tip;}
+
+    friend ostream& operator<<(ostream& i, const Zaposleni& z)
+    {
+        i<<"ISPIS ZAPOSLENOG"<<endl;
+        i<<(Osoba)z;
+        i<<"tip: ";
+        if(z.getTip()==0){i<<"animator"<<endl;}
+        if(z.getTip()==1){i<<"cuvar"<<endl;}
+        if(z.getTip()==2){i<<"prodavac karata"<<endl;}
+        if(z.getTip()==3){i<<"pekar"<<endl;}
+        i<<"radno vreme: "<<z.rv.pocetak<<"-"<<z.rv.kraj<<endl<<endl;
+        return i;
     }
 };
 

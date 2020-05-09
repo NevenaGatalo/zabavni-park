@@ -3,7 +3,7 @@
 using namespace std;
 class Osoba
 {
-private:
+protected:
     string ime;
     string prezime;
     int godine;
@@ -27,6 +27,16 @@ public:
         godine=o1.godine;
     }
     int getGodine()const{return godine;}
+    string getIme()const{return ime;}
+    string getPrezime()const{return prezime;}
+
+    friend ostream& operator<<(ostream& i, const Osoba &o)
+    {
+        i<<"ime: "<<o.getIme()<<endl;
+        i<<"prezime: "<<o.getPrezime()<<endl;
+        i<<"godine: "<<o.getGodine()<<endl;
+        return i;
+    }
 };
 
 #endif // OSOBA_HPP_INCLUDED
