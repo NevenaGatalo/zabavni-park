@@ -40,7 +40,6 @@ public:
     double getVisina()const{return visina;}
     Karta getKarta()const{return karta;}
     int getID()const{return id;}
-    //void setKarta(TipKarte t, bool v, unsigned c){karta.getTip()=t; karta.getVip()=v; karta.getCena()=c;}
 
     void citajFajl(string nazivFajla){
     cout<<"\tU fajlu pise: "<<endl;

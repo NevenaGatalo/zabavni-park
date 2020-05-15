@@ -30,14 +30,16 @@ ostream& operator<<(ostream& out, const Posetilac& p)
 
 int main()
 {
-    Zaposleni o1;
+    ZabavniPark zp;
+    zp.napravi_park();
+   /* Zaposleni o1;
     cout<<o1<<endl;
     Hrana h1;
     cout<<h1<<endl;
     Posetilac p1;
     cout<<p1<<endl;
 
-    cout<<"ukupan profit: "<<Profit::getUkupnaKol()<<endl;
+    cout<<"ukupan profit: "<<Profit::getUkupnaKol()<<endl;*/
 
     //p1.citajFajl("posetioci.txt");
     //mislila sam da se kod izvrsava iz perspektive admina i da taj admin tj. korisnik koji predstavlja admina moze da napravi svoj zabavni park i svoj sou program i voznje i da moze da prodaje hranu i karte posetiocima
