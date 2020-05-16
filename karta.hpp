@@ -23,6 +23,16 @@ public:
     bool getVip()const{return vip;}
     unsigned getCena()const{return cena;}
 
+    void ispis_tipa_karte()
+    {
+        if(tip==decija)
+            cout<<"decija"<<endl;
+       else if(tip==odrasla)
+            cout<<"odrasla"<<endl;
+       else if(tip==porodicna)
+            cout<<"porodicna"<<endl;
+    }
+
     friend ostream& operator<<(ostream& out, const Karta& k);
 };
 

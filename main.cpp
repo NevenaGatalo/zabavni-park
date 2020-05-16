@@ -32,6 +32,14 @@ int main()
 {
     ZabavniPark zp;
     zp.napravi_park();
+    zp.brise_voznje();
+    Osoba o1("N", "N", 25);
+    Zaposleni z("agent", "007", 25, 5000, pekar, 7, 7);
+    Posetilac p("Garfild", "Dzon", 32, 0.15, odrasla, false, 600, 1);
+
+    o1.predstavljanje();
+    z.predstavljanje();
+    p.predstavljanje();
    /* Zaposleni o1;
     cout<<o1<<endl;
     Hrana h1;

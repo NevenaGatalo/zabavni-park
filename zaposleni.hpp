@@ -15,7 +15,7 @@ private:
     RadnoVreme rv;
 public:
     Zaposleni():Osoba("Neko", "Zaposlen", 20), plata(5000), tip(pekar){rv.pocetak=7; rv.kraj=8;}
-    Zaposleni(string i, string pr, int g, int p, TipZaposlenog t, RadnoVreme r):Osoba(i, pr,g), plata(p), tip(t){rv=r;}
+    Zaposleni(string i, string pr, int g, int p, TipZaposlenog t, unsigned po, unsigned k ):Osoba(i, pr,g), plata(p), tip(t){rv.pocetak=po, rv.kraj=k;}
     Zaposleni(const Zaposleni &z):Osoba(z), plata(z.plata), tip(z.tip), rv(z.rv){}
 
     bool dodeli_kartu(Posetilac &p, Karta &k)
@@ -63,6 +63,19 @@ public:
         if(z.getTip()==3){i<<"pekar"<<endl;}
         i<<"radno vreme: "<<z.rv.pocetak<<"-"<<z.rv.kraj<<endl<<endl;
         return i;
+    }
+    void predstavljanje()
+    {
+        Osoba::predstavljanje();
+        if(tip==0)
+            cout<<"I ja sam zaposlen kao animator"<<endl;
+        if(tip==1)
+            cout<<"I ja sam zaposlen kao cuvar"<<endl;
+        if(tip==2)
+            cout<<"I ja sam zaposlen kao prodavac karata"<<endl;
+        if(tip==3)
+            cout<<"I ja sam zaposlen kao pekar"<<endl;
+        cout<<endl;
     }
 };
 

@@ -46,6 +46,13 @@ public:
     citajTxt(nazivFajla);
     cout<<endl<<endl;
     }
+    void predstavljanje()
+    {
+        Osoba::predstavljanje();
+        cout<<"Ja sam posetilac i moja visina je "<<visina<<" m"<<", a tip moje karte je ";
+        karta.ispis_tipa_karte();
+        cout<<endl<<endl;
+    }
 
     friend ostream& operator<<(ostream& out, const Posetilac& p);
 };

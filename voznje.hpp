@@ -17,13 +17,15 @@ public:
     (
      GD doba=leto,
      TipVremena tip=suncano,
-     double visinaLjudi=1.5,
-     unsigned ljudi=25,
-     bool radi=1,
-     unsigned visinaVoznje=70,
-     double brzina=80,
-     TipVoznje tipv=osmica
-     ):vreme(doba, tip){}
+     double visinaLj=1.5,
+     unsigned lj=25,
+     bool r=1,
+     unsigned visinaV=70,
+     double b=80,
+     TipVoznje t=osmica
+     ):vreme(doba, tip), visinaLjudi(visinaLj), ljudi(lj), radi(r), visinaVoznje(visinaV), brzina(b), tipv(t){}
+
+
 
     Voznja(const Voznja &v)
     {

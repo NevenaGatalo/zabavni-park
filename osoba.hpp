@@ -37,6 +37,10 @@ public:
         i<<"godine: "<<o.getGodine()<<endl;
         return i;
     }
+    virtual void predstavljanje()
+    {
+        cout<<"Ja sam "<<ime<<" "<<prezime<<endl;
+    }
 };
 
 #endif // OSOBA_HPP_INCLUDED
