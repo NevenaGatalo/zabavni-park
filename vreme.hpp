@@ -19,6 +19,22 @@ public:
 
     GD getGD()const{return doba;}
     TipVremena getTip()const{return tip;}
+
+    friend ostream& operator<<(ostream &out, const Vreme &v)
+    {
+        out<<"godisnje doba: ";
+        if(v.getGD()==prolece){out<<"prolece";}
+        if(v.getGD()==leto){out<<"leto";}
+        if(v.getGD()==jesen){out<<"jesen";}
+        if(v.getGD()==zima){out<<"zima";}
+        out<<" vreme: ";
+        if(v.getTip()==suncano){out<<"suncano";}
+        if(v.getTip()==kisovito){out<<"kisovito";}
+        if(v.getTip()==vetrovito){out<<"vetrovito";}
+        if(v.getTip()==oblacno){out<<"oblacno";}
+        if(v.getTip()==oluja){out<<"olujno";}
+        return out;
+    }
 };
 
 #endif // VREME_HPP_INCLUDED

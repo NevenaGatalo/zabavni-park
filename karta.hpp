@@ -33,7 +33,18 @@ public:
             cout<<"porodicna"<<endl;
     }
 
-    friend ostream& operator<<(ostream& out, const Karta& k);
+    friend ostream& operator<<(ostream& out, const Karta& k)
+    {
+        out<<"tip: ";
+        if(k.getTip()==0){out<<"decija"<<endl;}
+        if(k.getTip()==1){out<<"odrasla"<<endl;}
+        if(k.getTip()==2){out<<"porodicna"<<endl;}
+        out<<"vip: ";
+        if(k.getVip()==true){out<<"jeste"<<endl;}
+        if(k.getVip()==false){out<<"nije"<<endl;}
+        out<<"cena: "<<k.getCena();
+        return out;
+    }
 };
 
 #endif // KARTA_HPP_INCLUDED

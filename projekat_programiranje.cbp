@@ -32,10 +32,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="ZAPOSLENI.txt" />
+		<Unit filename="funkcije.hpp" />
 		<Unit filename="hrana.hpp" />
 		<Unit filename="karta.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="osoba.hpp" />
+		<Unit filename="osobe_za_zaposljavanje.txt" />
 		<Unit filename="posetilac.hpp" />
 		<Unit filename="posetioci.txt" />
 		<Unit filename="profit.hpp" />

@@ -4,6 +4,7 @@
 #include"hrana.hpp"
 #include"sou_program.hpp"
 #include "vreme.hpp"
+#include "zaposleni.hpp"
 #include <vector>
 #include <iostream>
 using namespace std;
@@ -17,109 +18,30 @@ private:
     Vreme vreme;
     Drzava drzava;
     vector<Voznja> voznje;
+    vector<Zaposleni> zaposleni;
+    vector<Sou_program> programi;
+    static double ukupnaKol;
 
 public:
     ZabavniPark():vreme(leto, suncano), ime("zp"), otvoren(true), drzava(Srbija){}
 
+    string getIme()const{return ime;}
+    bool getOtvoren()const{return otvoren;}
+    Vreme getVreme()const{return vreme;}
+    Drzava getDrzava()const{return drzava;}
+
     void napravi_park()
     {
-        int a;
-        int b;
         int o;
-        int drz;
 
         cout<<"Unestie ime zabavnog parka:"<<endl;
         cin>>ime;
         cout<<endl;
+        menja_i_postavlja_vreme();
 
-        cout<<"Unesite godisnje doba:"<<endl;
-        cout<<"     0=prolece"<<endl;
-        cout<<"     1=leto"<<endl;
-        cout<<"     2=jesen"<<endl;
-        cout<<"     3=zima"<<endl;
-        do {
-        cin>>a;
-        if(a<0 || a>3)
-        {
-            cout<<"Unesite pravilan broj"<<endl;
-        }
-        }while(a<0 || a>3);
-
-        cout<<"Unesite tip vremena:"<<endl;
-        cout<<"     0=suncano"<<endl;
-        cout<<"     1=kisovito"<<endl;
-        cout<<"     2=vetrovito"<<endl;
-        cout<<"     3=oblacno"<<endl;
-        cout<<"     4=olujno"<<endl;
-        cout<<endl;
-        do{
-        cin>>b;
-        if(b<0|| b>4)
-            cout<<"Unesite pravilan broj"<<endl;
-        }while(b<0 || b>4);
-
-        if(a==0){vreme.setDoba(prolece);}
-        if(a==1){vreme.setDoba(leto);}
-        if(a==2){vreme.setDoba(jesen);}
-        if(a==3){vreme.setDoba(zima);}
-        if(b==0){vreme.setTip(suncano);}
-        if(b==1){vreme.setTip(kisovito);}
-        if(b==2){vreme.setTip(vetrovito);}
-        if(b==3){vreme.setTip(oblacno);}
-        if(b==4){vreme.setTip(oluja);}
 
         cout<<"Drzava vaseg zabavnog parka:"<<endl;
-        cout<<"     0=Amerika"<<endl;
-        cout<<"     1=Srbija"<<endl;
-        cout<<"     2=Kanada"<<endl;
-        cout<<"     3=Engleska"<<endl;
-        cout<<"     4=Kina"<<endl;
-        cout<<"     5=Spanija"<<endl;
-        cout<<"     6=Japan"<<endl;
-        cout<<"     7=Francuska"<<endl;
-        cout<<"     8=Nemacka"<<endl;
-        cout<<"     9=Danska"<<endl;
-        cout<<"     10=Svedska"<<endl;
-        cout<<"     11=Italija"<<endl;
-        cout<<"     12=Brazil"<<endl;
-        cout<<"     13=Meksiko"<<endl;
-        do{
-        cin>>drz;
-        if(drz<0 || drz>13)
-            cout<<"Unesite validan broj"<<endl;
-        }while(drz<0 || drz>13);
-        cout<<endl;
-        switch(drz)
-        {
-            case 0: drzava=Amerika;
-            break;
-            case 1: drzava=Srbija;
-            break;
-            case 2: drzava=Kanada;
-            break;
-            case 3: drzava=Engleska;
-            break;
-            case 4: drzava=Kina;
-            break;
-            case 5: drzava=Spanija;
-            break;
-            case 6: drzava=Japan;
-            break;
-            case 7: drzava=Francuska;
-            break;
-            case 8: drzava=Nemacka;
-            break;
-            case 9: drzava=Danska;
-            break;
-            case 10: drzava=Svedska;
-            break;
-            case 11: drzava=Italija;
-            break;
-            case 12: drzava=Brazil;
-            break;
-            case 13: drzava=Meksiko;
-            break;
-        }
+        menja_i_postavlja_drzavu();
 
         unos_voznji();
 
@@ -303,7 +225,505 @@ public:
         }
         }while(vz>=0 && vz<10 || vz>10 || vz<0);
     }
+    void menja_voznje()
+    {
+        int k;
+        cout<<"Da li zelite da isbrisete ili unesete voznje u zabavni park?"<<endl;
+        cout<<"     0 = unos voznji"<<endl;
+        cout<<"     1 = brisanje voznji"<<endl;
+        cin>>k;
+        while(k!=0 && k!=1)
+        {
+            cout<<"Unesite validan broj:";
+            cin>>k;
+        }
+        if(k==0)
+        {
+            unos_voznji();
+        }
+        else
+            brise_voznje();
+        ispis_voznji();
+    }
+    /*void zaposljavanje()
+{
+    int id;
+    bool boo;
+    string a;
+    string b;
+    string ap;
+    string jedan;
+    string dva;
+    string tri;
+    int pl;
+    vector<vector<string>> vektor;
+    cout<<"Koga zelite da zaposlite?"<<endl;
+    cout<<"Ispis osoba za zaposljavanje:"<<endl;
+    cout<<endl;
+    citajTxt("osobe_za_zaposljavanje.txt");
+    cout<<endl;
+    cout<<"Unesite ID osobe koju zelite da zaposlite: ";
+    cin>>a;
 
+    cout<<"Unesite posao vaseg zaposlenog:"<<endl;
+    cout<<"     animator"<<endl;
+    cout<<"     cuvar"<<endl;
+    cout<<"     prodavac_karata"<<endl;
+    cout<<"     pekar"<<endl;
+    cin>>b;
+    while(b != "animator" && b != "cuvar" && b != "prodavac_karata" && b != "pekar")
+    {
+        cout<<"Unos nije validan, molim vas unesite ponovo:"<<endl;
+        cin>>b;
+    }
+    cout<<endl;
+    cout<<"Unesite platu vaseg zaposlenog:"<<endl;
+    cin>>pl;
+    vektor = citajTxt_a("osobe_za_zaposljavanje.txt");
+    for(auto i = vektor.begin(); i<vektor.end(); i++)
+    {
+        for(auto j = i->begin() ; j<i->end() ; j++)
+        {
+            if(a == (*j))
+            {
+                id = stoi(*j);
+                boo = true;
+            }
+            else
+                boo = false;
+        }
+        if(boo == true)
+        {
+        int godine = stoi((*i)[2]);
+            if(b == "animator"){
+                    Zaposleni novi ((*i)[0], (*i)[1], godine, id, pl, animator, 7, 7);
+                    zaposleni.push_back(novi);
+                    ap.append((*i)[0]);
+                    ap.append(",");
+                    ap.append((*i)[1]);
+                    ap.append(",");
+                    jedan = to_string(godine);
+                    ap.append(jedan);
+                    ap.append(",");
+                    dva = to_string(id);
+                    ap.append(dva);
+                    ap.append(",");
+                    tri = to_string(pl);
+                    ap.append(tri);
+                    ap.append(",animator,");
+                    ap.append("7-7");
+                    pisiTxt("ZAPOSLENI.txt", ap, 'a');
+                    cout<<"Uspesno ste zaposlili: "<<endl;
+                    cout<<novi<<endl;}
+            if(b == "cuvar"){
+                    Zaposleni novi ((*i)[0], (*i)[1], godine, id, 5000, cuvar, 7, 7);
+                    zaposleni.push_back(novi);
+                    ap.append((*i)[0]);
+                    ap.append(",");
+                    ap.append((*i)[1]);
+                    ap.append(",");
+                    jedan = to_string(godine);
+                    ap.append(jedan);
+                    ap.append(",");
+                    dva = to_string(id);
+                    ap.append(dva);
+                    ap.append(",");
+                    tri = to_string(pl);
+                    ap.append(tri);
+                    ap.append(",cuvar,");
+                    ap.append("7-7");
+                    pisiTxt("ZAPOSLENI.txt", ap, 'a');
+                    cout<<"Uspesno ste zaposlili: "<<endl;
+                    cout<<novi<<endl;}
+            if(b == "prodavac_karata"){
+                    Zaposleni novi ((*i)[0], (*i)[1], godine, id, 5000, prodavac_karata, 7, 7);
+                    zaposleni.push_back(novi);
+                    ap.append((*i)[0]);
+                    ap.append(",");
+                    ap.append((*i)[1]);
+                    ap.append(",");
+                    jedan = to_string(godine);
+                    ap.append(jedan);
+                    ap.append(",");
+                    dva = to_string(id);
+                    ap.append(dva);
+                    ap.append(",");
+                    tri = to_string(pl);
+                    ap.append(tri);
+                    ap.append(",prodavac_karata,");
+                    ap.append("7-7");
+                    pisiTxt("ZAPOSLENI.txt", ap, 'a');
+                    cout<<"Uspesno ste zaposlili: "<<endl;
+                    cout<<novi<<endl;}
+            if(b == "pekar"){
+                    Zaposleni novi ((*i)[0], (*i)[1], godine, id, 5000, pekar, 7, 7);
+                    zaposleni.push_back(novi);
+                    ap.append((*i)[0]);
+                    ap.append(",");
+                    ap.append((*i)[1]);
+                    ap.append(",");
+                    jedan = to_string(godine);
+                    ap.append(jedan);
+                    ap.append(",");
+                    dva = to_string(id);
+                    ap.append(dva);
+                    ap.append(",");
+                    tri = to_string(pl);
+                    ap.append(tri);
+                    ap.append(",pekar,");
+                    ap.append("7-7");
+                    pisiTxt("ZAPOSLENI.txt", ap, 'a');
+                    cout<<"Uspesno ste zaposlili: "<<endl;
+                    cout<<novi<<endl;}
+        }
+
+    }
+
+}*/
+void zaposljavanje()
+{
+
+    int id;
+    bool boo;
+    string a;
+    string b;
+    string ap;
+    string jedan;
+    string dva;
+    string tri;
+    int pl;
+    vector<vector<string>> vektor;
+    cout<<"Koga zelite da zaposlite?"<<endl;
+    cout<<"Ispis osoba za zaposljavanje:"<<endl;
+    cout<<endl;
+    citajTxt("osobe_za_zaposljavanje.txt");
+    cout<<endl;
+    cout<<"Unesite ID osobe koju zelite da zaposlite: ";
+    cin>>a;
+
+    cout<<"Unesite posao vaseg zaposlenog:"<<endl;
+    cout<<"     animator"<<endl;
+    cout<<"     cuvar"<<endl;
+    cout<<"     prodavac_karata"<<endl;
+    cout<<"     pekar"<<endl;
+    cin>>b;
+    while(b != "animator" && b != "cuvar" && b != "prodavac_karata" && b != "pekar")
+    {
+        cout<<"Unos nije validan, molim vas unesite ponovo:"<<endl;
+        cin>>b;
+    }
+    cout<<endl;
+    cout<<"Unesite platu vaseg zaposlenog:"<<endl;
+    cin>>pl;
+    vektor = citajTxt_a("osobe_za_zaposljavanje.txt");
+    for(auto i = vektor.begin(); i<vektor.end(); i++)
+    {
+            if(a == (*i)[3])
+            {
+                id = stoi((*i)[3]);
+                int godine = stoi((*i)[2]);
+            if(b == "animator"){
+                    Zaposleni novi ((*i)[0], (*i)[1], godine, id, pl, animator, 7, 7);
+                    zaposleni.push_back(novi);
+                    ap.append((*i)[0]);
+                    ap.append(",");
+                    ap.append((*i)[1]);
+                    ap.append(",");
+                    jedan = to_string(godine);
+                    ap.append(jedan);
+                    ap.append(",");
+                    dva = to_string(id);
+                    ap.append(dva);
+                    ap.append(",");
+                    tri = to_string(pl);
+                    ap.append(tri);
+                    ap.append(",animator,");
+                    ap.append("7-7");
+                    pisiTxt("ZAPOSLENI.txt", ap, 'a');
+                    cout<<"Uspesno ste zaposlili: "<<endl;
+                    cout<<novi<<endl;}
+            if(b == "cuvar"){
+                    Zaposleni novi ((*i)[0], (*i)[1], godine, id, 5000, cuvar, 7, 7);
+                    zaposleni.push_back(novi);
+                    ap.append((*i)[0]);
+                    ap.append(",");
+                    ap.append((*i)[1]);
+                    ap.append(",");
+                    jedan = to_string(godine);
+                    ap.append(jedan);
+                    ap.append(",");
+                    dva = to_string(id);
+                    ap.append(dva);
+                    ap.append(",");
+                    tri = to_string(pl);
+                    ap.append(tri);
+                    ap.append(",cuvar,");
+                    ap.append("7-7");
+                    pisiTxt("ZAPOSLENI.txt", ap, 'a');
+                    cout<<"Uspesno ste zaposlili: "<<endl;
+                    cout<<novi<<endl;}
+            if(b == "prodavac_karata"){
+                    Zaposleni novi ((*i)[0], (*i)[1], godine, id, 5000, prodavac_karata, 7, 7);
+                    zaposleni.push_back(novi);
+                    ap.append((*i)[0]);
+                    ap.append(",");
+                    ap.append((*i)[1]);
+                    ap.append(",");
+                    jedan = to_string(godine);
+                    ap.append(jedan);
+                    ap.append(",");
+                    dva = to_string(id);
+                    ap.append(dva);
+                    ap.append(",");
+                    tri = to_string(pl);
+                    ap.append(tri);
+                    ap.append(",prodavac_karata,");
+                    ap.append("7-7");
+                    pisiTxt("ZAPOSLENI.txt", ap, 'a');
+                    cout<<"Uspesno ste zaposlili: "<<endl;
+                    cout<<novi<<endl;}
+            if(b == "pekar"){
+                    Zaposleni novi ((*i)[0], (*i)[1], godine, id, 5000, pekar, 7, 7);
+                    zaposleni.push_back(novi);
+                    ap.append((*i)[0]);
+                    ap.append(",");
+                    ap.append((*i)[1]);
+                    ap.append(",");
+                    jedan = to_string(godine);
+                    ap.append(jedan);
+                    ap.append(",");
+                    dva = to_string(id);
+                    ap.append(dva);
+                    ap.append(",");
+                    tri = to_string(pl);
+                    ap.append(tri);
+                    ap.append(",pekar,");
+                    ap.append("7-7");
+                    pisiTxt("ZAPOSLENI.txt", ap, 'a');
+                    cout<<"Uspesno ste zaposlili: "<<endl;
+                    cout<<novi<<endl;}
+                boo = true;
+                break;
+
+                }
+                else
+                boo = false;
+
+                }
+    }
+
+
+        /*while(boo == false)
+        {
+            cout<<"Unesite validan id:"<<endl;
+            cin>>a;
+        }*/
+
+
+
+
+
+
+    void ispis_zaposlenih()
+    {
+        cout<<"ISPIS ZAPOSLENIH U ZABAVNOM PARKU"<<endl;
+        for(auto it=zaposleni.begin(); it<zaposleni.end(); it++)
+        {
+            cout<<*it<<endl;
+        }
+    }
+    friend ostream& operator<<(ostream &out, const ZabavniPark &z)
+    {
+        out<<endl;
+        out<<"ISPIS ZABAVNOG PARKA"<<endl;
+        out<<"Ime: "<<z.getIme()<<endl;
+        out<<"Vreme u vasem zabavnom parku je: "<<z.getVreme()<<endl;
+        out<<"Drzava u kojoj se nalazi vas zabavni park je: ";
+        if(z.getDrzava()==Amerika){out<<"Amerika";}
+        if(z.getDrzava()==Srbija){out<<"Srbija";}
+        if(z.getDrzava()==Kanada){out<<"Kanada";}
+        if(z.getDrzava()==Engleska){out<<"Engleska";}
+        if(z.getDrzava()==Kina){out<<"Kina";}
+        if(z.getDrzava()==Spanija){out<<"Spanija";}
+        if(z.getDrzava()==Japan){out<<"Japan";}
+        if(z.getDrzava()==Francuska){out<<"Francuska";}
+        if(z.getDrzava()==Nemacka){out<<"Nemacka";}
+        if(z.getDrzava()==Danska){out<<"Danska";}
+        if(z.getDrzava()==Svedska){out<<"Svedskaa";}
+        if(z.getDrzava()==Italija){out<<"Italija";}
+        if(z.getDrzava()==Brazil){out<<"Brazil";}
+        if(z.getDrzava()==Meksiko){out<<"Meksiko";}
+        out<<endl;
+        out<<"Voznje vaseg zabavnog parka su: "<<endl<<endl;
+        if(z.voznje.size()==0)
+        {
+            cout<<"Nema voznji"<<endl;
+        }
+        for(auto it=z.voznje.begin(); it<z.voznje.end(); it++)
+        {
+            out<<*it;
+        }
+        out<<endl;
+        out<<"Zaposleni vaseg zabavnog parka su: "<<endl<<endl;
+        if(z.zaposleni.size()==0)
+        {
+            cout<<"Nema zaposlenih"<<endl;
+        }
+        for(auto it=z.zaposleni.begin(); it<z.zaposleni.end(); it++)
+        {
+            out<<*it;
+        }
+        out<<endl;
+        out<<"Posetioci zabavnog parka: "<<endl<<endl;
+        citajTxt("posetioci.txt");
+        out<<endl;
+        out<<"Vas zabavni park je: ";
+        if(z.getOtvoren()==true){out<<"otvoren";}
+        if(z.getOtvoren()==false){out<<"zatvoren";}
+        out<<endl;
+
+       return out;
+    }
+    void menja_zp()
+    {
+        int b;
+        do
+        {
+            cout<<"MENJANJE ZABAVNOG PARKA"<<endl;
+            cout<<"     0 = naziv"<<endl;
+            cout<<"     1 = da li je otvoren/zatvoren"<<endl;
+            cout<<"     2 = drzava u kojoj se park nalazi"<<endl;
+            cout<<"     3 = vreme u zabavnom parku"<<endl;
+            cout<<"     4 = voznje"<<endl;
+            cout<<"     5 = kraj"<<endl;
+            cout<<"Sta zelite da promenite u zabavnom parku"<<endl;
+            cin>>b;
+            if(b<0 || b>5)
+            {
+                cout<<"Unesite validan broj:"<<endl;
+            }
+            if(b==0)
+            {
+                cout<<"Unesite novi naziv:"<<endl;
+                cin>>ime;
+            }
+            if(b==1)
+            {
+                if(otvoren==true){otvoren=false; cout<<"Vas zabavni park je sada zatvoren"<<endl;}
+                else{otvoren=true; cout<<"Vas zabavni park je sada otvoren"<<endl;}
+            }
+            if(b==2)
+            {
+                cout<<"Unesite novu drzavu zabavnog parka:"<<endl;
+                menja_i_postavlja_drzavu();
+            }
+            if(b==3)
+            {
+                cout<<"Unesite novo vreme u zabavnom parku"<<endl;
+                menja_i_postavlja_vreme();
+
+            }
+            if(b==4)
+            {
+                menja_voznje();
+            }
+            if(b==5){break;}
+        }while(b!=5);
+    }
+    void menja_i_postavlja_drzavu ()
+    {
+        int drz;
+        cout<<"     0=Amerika"<<endl;
+        cout<<"     1=Srbija"<<endl;
+        cout<<"     2=Kanada"<<endl;
+        cout<<"     3=Engleska"<<endl;
+        cout<<"     4=Kina"<<endl;
+        cout<<"     5=Spanija"<<endl;
+        cout<<"     6=Japan"<<endl;
+        cout<<"     7=Francuska"<<endl;
+        cout<<"     8=Nemacka"<<endl;
+        cout<<"     9=Danska"<<endl;
+        cout<<"     10=Svedska"<<endl;
+        cout<<"     11=Italija"<<endl;
+        cout<<"     12=Brazil"<<endl;
+        cout<<"     13=Meksiko"<<endl;
+        do{
+        cin>>drz;
+        if(drz<0 || drz>13)
+            cout<<"Unesite validan broj"<<endl;
+        }while(drz<0 || drz>13);
+        cout<<endl;
+        switch(drz)
+        {
+            case 0: drzava=Amerika;
+            break;
+            case 1: drzava=Srbija;
+            break;
+            case 2: drzava=Kanada;
+            break;
+            case 3: drzava=Engleska;
+            break;
+            case 4: drzava=Kina;
+            break;
+            case 5: drzava=Spanija;
+            break;
+            case 6: drzava=Japan;
+            break;
+            case 7: drzava=Francuska;
+            break;
+            case 8: drzava=Nemacka;
+            break;
+            case 9: drzava=Danska;
+            break;
+            case 10: drzava=Svedska;
+            break;
+            case 11: drzava=Italija;
+            break;
+            case 12: drzava=Brazil;
+            break;
+            case 13: drzava=Meksiko;
+            break;
+        }
+    }
+    void menja_i_postavlja_vreme()
+    {
+        int a, b;
+        cout<<"Unesite godisnje doba:"<<endl;
+        cout<<"     0=prolece"<<endl;
+        cout<<"     1=leto"<<endl;
+        cout<<"     2=jesen"<<endl;
+        cout<<"     3=zima"<<endl;
+        do {
+        cin>>a;
+        if(a<0 || a>3)
+        {
+            cout<<"Unesite pravilan broj"<<endl;
+        }
+        }while(a<0 || a>3);
+
+        cout<<"Unesite tip vremena:"<<endl;
+        cout<<"     0=suncano"<<endl;
+        cout<<"     1=kisovito"<<endl;
+        cout<<"     2=vetrovito"<<endl;
+        cout<<"     3=oblacno"<<endl;
+        cout<<"     4=olujno"<<endl;
+        cout<<endl;
+        do{
+        cin>>b;
+        if(b<0|| b>4)
+            cout<<"Unesite pravilan broj"<<endl;
+        }while(b<0 || b>4);
+
+        if(a==0){vreme.setDoba(prolece);}
+        if(a==1){vreme.setDoba(leto);}
+        if(a==2){vreme.setDoba(jesen);}
+        if(a==3){vreme.setDoba(zima);}
+        if(b==0){vreme.setTip(suncano);}
+        if(b==1){vreme.setTip(kisovito);}
+        if(b==2){vreme.setTip(vetrovito);}
+        if(b==3){vreme.setTip(oblacno);}
+        if(b==4){vreme.setTip(oluja);}
+    }
 };
 
 #endif // ZABAVNI_PARK_HPP_INCLUDED
