@@ -1,2 +1,4 @@
 
-Anja,Gagic,16,5,9000,pekar,7-7
+Anastasija,Kirus,18,1,8000,animator,7-7
+Anja,Gagic,16,5,5000,animator,7-7
+Nikolina,Smokljan,25,2,5000,animator,7-7
