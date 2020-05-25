@@ -27,6 +27,7 @@ public:
     Vreme getVreme()const{return vreme;}
     Drzava getDrzava()const{return drzava;}
     vector<Sou_program> getProgrami()const{return programi;}
+    vector<Voznja> getVoznje ()const{return voznje;}
 
     void setProgrami(const Sou_program& s)
   {

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <string>
 
 using namespace std;
 
@@ -70,5 +71,59 @@ int main()
 
     }while(a!=10);
     cout<<zp<<endl<<endl;
+    string otvoren;
+    string vreme1;
+    string vreme2;
+    string drzava1;
+    if(zp.getOtvoren()==true)
+    {
+        otvoren="otvoren";
+    }
+    if(zp.getOtvoren()==false)
+    {
+        otvoren="zatvoren";
+    }
+    if(zp.getVreme().getGD()==prolece)
+    {
+        vreme1="prolece";
+    }
+    if(zp.getVreme().getGD()==leto)
+    {
+        vreme1="leto";
+    }
+    if(zp.getVreme().getGD()==jesen)
+    {
+        vreme1="jesen";
+    }
+    if(zp.getVreme().getGD()==zima)
+    {
+        vreme1="zima";
+    }
+
+    if(zp.getVreme().getTip()==suncano){vreme2="suncano";}
+    if(zp.getVreme().getTip()==kisovito){vreme2="kisovito";}
+    if(zp.getVreme().getTip()==vetrovito){vreme2="vetrovito";}
+    if(zp.getVreme().getTip()==oblacno){vreme2="oblacno";}
+    if(zp.getVreme().getTip()==oluja){vreme2="olujno";}
+
+    if(zp.getDrzava()==Amerika){drzava1="Amerika";}
+    if(zp.getDrzava()==Srbija){drzava1="Srbija";}
+    if(zp.getDrzava()==Kanada){drzava1="Kanada";}
+    if(zp.getDrzava()==Engleska){drzava1="Engleska";}
+    if(zp.getDrzava()==Kina){drzava1="Kina";}
+    if(zp.getDrzava()==Spanija){drzava1="Spanija";}
+    if(zp.getDrzava()==Japan){drzava1="Japan";}
+    if(zp.getDrzava()==Francuska){drzava1="Francuska";}
+    if(zp.getDrzava()==Nemacka){drzava1="Nemacka";}
+    if(zp.getDrzava()==Danska){drzava1="Danska";}
+    if(zp.getDrzava()==Svedska){drzava1="Svedskaa";}
+    if(zp.getDrzava()==Italija){drzava1="Italija";}
+    if(zp.getDrzava()==Brazil){drzava1="Brazil";}
+    if(zp.getDrzava()==Meksiko){drzava1="Meksiko";}
+
+    string zabavni;
+    zabavni=zp.getIme()+","+otvoren+","+vreme1+"-"+vreme2+","+drzava1+","+to_string(zp.getProgrami().size());
+    pisiTxt("zabavni.txt", zabavni);
+
     return 0;
 }
