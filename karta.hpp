@@ -1,7 +1,6 @@
 #ifndef KARTA_HPP_INCLUDED
 #define KARTA_HPP_INCLUDED
-#include <iostream>
-using namespace std;
+
 enum TipKarte {decija, odrasla, porodicna};
 
 class Karta

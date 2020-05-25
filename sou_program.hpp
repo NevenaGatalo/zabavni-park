@@ -47,6 +47,8 @@ public:
     {
         int t;
 
+        cout<<"------PRAVLJENJE SOU PROGRAMA------"<<endl;
+        cout<<endl;
         cout<<"Unesite naziv programa:"<<endl;
         cin>>naziv;
         cout<<endl;
@@ -63,17 +65,26 @@ public:
         else if(t==2){tip=predstava;}
 
         cout<<endl;
-        cout<<"Unesite id animatora koji ce voditi program"<<endl;
-        ispisi_animatore();
-        cout<<endl;
+
+        if(ispisi_animatore()==true)
+        {
+            cout<<endl;
+            cout<<"Unesite id animatora koji ce voditi program"<<endl;
+            cout<<endl;
         cout<<"Kada budete zadovoljni vasim izvodjacima ukucajte kraj"<<endl;
         upisi_izvodjace();
         cout<<endl;
-        cout<<"Uspesno ste dodali animatore!"<<endl;
         while(ispisi_izvodjace()==false)
         {
                 cout<<"Niste uneli nijednog izvodjaca, unesite izvodjace:"<<endl<<endl;
                 upisi_izvodjace();
+        }
+        cout<<"Uspesno ste dodali animatore!"<<endl;
+        }
+       else //if(ispisi_animatore()==false)
+        {
+            cout<<"Morate zaposliti animatore kako bi mogli da ih unesete u sou program"<<endl<<endl;
+
         }
         cout<<"Unesite satnicu vaseg programa:"<<"\n"<<"sat: ";
         cin>>vreme.sat;
@@ -87,8 +98,9 @@ public:
         cin>>datum.godina;
 
     }
-    void ispisi_animatore()
+    bool ispisi_animatore()
     {
+        bool boo=false;
         cout<<"ISPIS ANIMATORA:"<<endl;
         vector<vector<string>> zaposleni;
         zaposleni = citajTxt_a("ZAPOSLENI.txt");
@@ -106,10 +118,16 @@ public:
                     cout<<(*i)[4]<<" ";
                     cout<<(*i)[5]<<" ";
                     cout<<(*i)[6]<<" ";
+                    boo=true;
                 }
             }
             cout<<"\n";
         }
+        if(boo==false)
+            {
+                cout<<"Nema animatora"<<endl;
+            }
+        return boo;
     }
     void upisi_izvodjace()
     {
@@ -317,7 +335,6 @@ public:
         out<<"Vreme programa: "<<s.vreme.sat<<":"<<s.vreme.minuti<<endl;
         return out;
     }
-
 };
 
 #endif // SOU_PROGRAM_HPP_INCLUDED

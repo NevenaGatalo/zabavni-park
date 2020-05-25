@@ -1,5 +1,4 @@
-Anastasija,Kirus,18,1
-Nikolina,Smokljan,25,2
-Marina,Staljin,56,3
-Ninad,Miljkovic,19,4
-Anja,Gagic,16,5
+Ime6,Prezime4,34,2
+Ime6,Prezime4,34,6
+Ime6,Prezime4,34,8
+

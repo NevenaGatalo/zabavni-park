@@ -1,4 +1,3 @@
 
-Anastasija,Kirus,18,1,8000,animator,7-7
-Anja,Gagic,16,5,5000,animator,7-7
-Nikolina,Smokljan,25,2,5000,animator,7-7
+Ime6,Prezime4,34,3,6000,animator,7-7
+Ime6,Prezime4,34,7,45,pekar,7-7

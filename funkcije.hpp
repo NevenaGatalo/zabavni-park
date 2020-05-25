@@ -1,6 +1,7 @@
 #ifndef FUNKCIJE_HPP_INCLUDED
 #define FUNKCIJE_HPP_INCLUDED
 
+
 vector<string> splitSen(string str, char c=',')
 {
     string w = "";
@@ -48,23 +49,24 @@ void citajTxt(string nazivFajla)
     else
         cout << "Neuspesno otvoren fajl";
 }
-string citajTxt_string(string nazivFajla)
+/*vector<string> citajTxt_string(string nazivFajla)///ova funkcija je za brisanje iz osobe za zaposljavanje
 {
     string linija;
-    string b;
+    vector<string> b;
     ifstream fajl (nazivFajla);
     if (fajl.is_open())
     {
         while ( getline (fajl,linija) )
         {
-            b.append(linija);
+            b.push_back(linija);
         }
         fajl.close();
     }
     else
         cout << "Neuspesno otvoren fajl";
+    cout<<"citaj txt string radi"<<endl;
     return b;
-}
+}*/
 vector<vector<string>> citajTxt_a(string nazivFajla)
 {
     vector <vector<string>> viktorija;
@@ -90,5 +92,6 @@ void citajFajl(string nazivFajla)
     citajTxt(nazivFajla);
     cout<<endl<<endl;
 }
+
 
 #endif // FUNKCIJE_HPP_INCLUDED

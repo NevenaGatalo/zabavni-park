@@ -3,11 +3,12 @@
 #include"voznje.hpp"
 #include"hrana.hpp"
 #include"sou_program.hpp"
-#include "vreme.hpp"
+//#include "vreme.hpp"
 #include "zaposleni.hpp"
+//#include "funkcije.hpp"
 #include <vector>
-#include <iostream>
-using namespace std;
+#include <windows.h>
+
 enum Drzava{Amerika, Srbija, Kanada, Engleska, Kina, Spanija, Japan, Francuska, Nemacka, Danska, Svedska, Italija, Brazil, Meksiko};
 
 class ZabavniPark
@@ -20,7 +21,7 @@ private:
     vector<Voznja> voznje;
     vector<Zaposleni> zaposleni;
     vector<Sou_program> programi;
-    static double ukupnaKol;
+    vector<Osoba> osobe;
 
 public:
     ZabavniPark():vreme(leto, suncano), ime("zp"), otvoren(true), drzava(Srbija){}
@@ -29,12 +30,18 @@ public:
     bool getOtvoren()const{return otvoren;}
     Vreme getVreme()const{return vreme;}
     Drzava getDrzava()const{return drzava;}
+    vector<Sou_program> getProgrami()const{return programi;}
+
+    void setProgrami(const Sou_program& s)
+  {
+    programi.push_back(s);
+  }
 
     void napravi_park()
     {
         int o;
 
-        cout<<"Unestie ime zabavnog parka:"<<endl;
+        cout<<"Unesite ime zabavnog parka:"<<endl;
         cin>>ime;
         cout<<endl;
         menja_i_postavlja_vreme();
@@ -380,26 +387,58 @@ public:
     }
 
 }*/
+void ucitajOsobe(string n)
+    {
+        string osobef=n;
+        string linija;
+        vector<string> result;
+        ifstream fajl (osobef);
+        if (fajl.is_open())
+        {
+            while ( getline (fajl,linija) )
+            {
+                if (linija!="")
+                {
+                    result = splitSen(linija);
+                    Osoba o(result[0], result[1], stoi(result[2]), stoi(result[3]));
+                    osobe.push_back(o);
+                }
+            }
+            fajl.close();
+        }
+        else
+            cout << "Neuspesno otvoren fajl";
+    }
+    void dodajOsobe()
+    {
+        string fajl="osobe_za_zaposljavanje.txt";
+        ucitajOsobe(fajl);
+    }
 void zaposljavanje()
 {
 
     int id;
     bool boo;
-    string a;
+    int a;
     string b;
-    string ap;
-    string jedan;
-    string dva;
-    string tri;
     int pl;
-    vector<vector<string>> vektor;
     cout<<"Koga zelite da zaposlite?"<<endl;
     cout<<"Ispis osoba za zaposljavanje:"<<endl;
     cout<<endl;
-    citajTxt("osobe_za_zaposljavanje.txt");
+    dodajOsobe();
+    for(auto it=osobe.begin(); it<osobe.end(); it++)
+    {
+        cout<<"ISPIS OSOBE"<<endl;
+        cout<<*it;
+    }
     cout<<endl;
     cout<<"Unesite ID osobe koju zelite da zaposlite: ";
     cin>>a;
+    while(pretrazuje_osobe(a)==false)
+    {
+        cout<<"Unesite validan id:"<<endl;
+        cin>>a;
+    }
 
     cout<<"Unesite posao vaseg zaposlenog:"<<endl;
     cout<<"     animator"<<endl;
@@ -415,114 +454,111 @@ void zaposljavanje()
     cout<<endl;
     cout<<"Unesite platu vaseg zaposlenog:"<<endl;
     cin>>pl;
-    vektor = citajTxt_a("osobe_za_zaposljavanje.txt");
-    for(auto i = vektor.begin(); i<vektor.end(); i++)
+
+    string i = vraca_ime(a);
+    string p = vraca_prezime(a);
+    int g = vraca_godine(a);
+    Zaposleni z(i, p, g, a, pl, pretvaranje(b), 7, 7);
+    zaposleni.push_back(z);
+    string konacan;
+    string konacan2;
+    for(auto it=zaposleni.begin(); it<zaposleni.end(); it++)
     {
-            if(a == (*i)[3])
-            {
-                id = stoi((*i)[3]);
-                int godine = stoi((*i)[2]);
-            if(b == "animator"){
-                    Zaposleni novi ((*i)[0], (*i)[1], godine, id, pl, animator, 7, 7);
-                    zaposleni.push_back(novi);
-                    ap.append((*i)[0]);
-                    ap.append(",");
-                    ap.append((*i)[1]);
-                    ap.append(",");
-                    jedan = to_string(godine);
-                    ap.append(jedan);
-                    ap.append(",");
-                    dva = to_string(id);
-                    ap.append(dva);
-                    ap.append(",");
-                    tri = to_string(pl);
-                    ap.append(tri);
-                    ap.append(",animator,");
-                    ap.append("7-7");
-                    pisiTxt("ZAPOSLENI.txt", ap, 'a');
-                    cout<<"Uspesno ste zaposlili: "<<endl;
-                    cout<<novi<<endl;}
-            if(b == "cuvar"){
-                    Zaposleni novi ((*i)[0], (*i)[1], godine, id, 5000, cuvar, 7, 7);
-                    zaposleni.push_back(novi);
-                    ap.append((*i)[0]);
-                    ap.append(",");
-                    ap.append((*i)[1]);
-                    ap.append(",");
-                    jedan = to_string(godine);
-                    ap.append(jedan);
-                    ap.append(",");
-                    dva = to_string(id);
-                    ap.append(dva);
-                    ap.append(",");
-                    tri = to_string(pl);
-                    ap.append(tri);
-                    ap.append(",cuvar,");
-                    ap.append("7-7");
-                    pisiTxt("ZAPOSLENI.txt", ap, 'a');
-                    cout<<"Uspesno ste zaposlili: "<<endl;
-                    cout<<novi<<endl;}
-            if(b == "prodavac_karata"){
-                    Zaposleni novi ((*i)[0], (*i)[1], godine, id, 5000, prodavac_karata, 7, 7);
-                    zaposleni.push_back(novi);
-                    ap.append((*i)[0]);
-                    ap.append(",");
-                    ap.append((*i)[1]);
-                    ap.append(",");
-                    jedan = to_string(godine);
-                    ap.append(jedan);
-                    ap.append(",");
-                    dva = to_string(id);
-                    ap.append(dva);
-                    ap.append(",");
-                    tri = to_string(pl);
-                    ap.append(tri);
-                    ap.append(",prodavac_karata,");
-                    ap.append("7-7");
-                    pisiTxt("ZAPOSLENI.txt", ap, 'a');
-                    cout<<"Uspesno ste zaposlili: "<<endl;
-                    cout<<novi<<endl;}
-            if(b == "pekar"){
-                    Zaposleni novi ((*i)[0], (*i)[1], godine, id, 5000, pekar, 7, 7);
-                    zaposleni.push_back(novi);
-                    ap.append((*i)[0]);
-                    ap.append(",");
-                    ap.append((*i)[1]);
-                    ap.append(",");
-                    jedan = to_string(godine);
-                    ap.append(jedan);
-                    ap.append(",");
-                    dva = to_string(id);
-                    ap.append(dva);
-                    ap.append(",");
-                    tri = to_string(pl);
-                    ap.append(tri);
-                    ap.append(",pekar,");
-                    ap.append("7-7");
-                    pisiTxt("ZAPOSLENI.txt", ap, 'a');
-                    cout<<"Uspesno ste zaposlili: "<<endl;
-                    cout<<novi<<endl;}
-                boo = true;
-                break;
+        konacan = it->getIme() +","+it->getPrezime()+","+to_string(it->getGodine())+","+to_string(it->getID())+","+to_string(it->getPlata())+","+pretvaranje2(it->getTip())+","+to_string(it->getPocetak())+"-"+to_string(it->getKraj());
 
-                }
-                else
-                boo = false;
-
-                }
     }
+    pisiTxt("ZAPOSLENI.txt", konacan, 'a');
+    brise_iz_osobe_za_zaposljavanje(a);
+    for(auto it=osobe.begin(); it<osobe.end(); it++)
+    {
+
+        konacan2.append(it->getIme());
+        konacan2.append(",");
+        konacan2.append(it->getPrezime());
+        konacan2.append(",");
+        konacan2.append(to_string(it->getGodine()));
+        konacan2.append(",");
+        konacan2.append(to_string(it->getID()));
+        konacan2.append("\n");
 
 
-        /*while(boo == false)
+    }
+    pisiTxt("osobe_za_zaposljavanje.txt", konacan2);
+    cout<<"Uspesno ste zaposlili: "<<z<<endl;
+    }
+    void brise_iz_osobe_za_zaposljavanje(int id)
+    {
+        for(auto it=osobe.begin(); it<osobe.end(); it++)
         {
-            cout<<"Unesite validan id:"<<endl;
-            cin>>a;
-        }*/
-
-
-
-
-
+            cout<<"id: "<<id<<endl<<"getid: "<<it->getID()<<endl;
+            if(it->getID()==id)
+            {
+                cout<<"Ovog izbrise "<<*it<<endl;
+                osobe.erase(it);
+            }
+            else
+                cout<<"Nije pronadjen"<<endl;
+        }
+        for(auto it=osobe.begin(); it<osobe.end(); it++)
+        {
+            cout<<*it<<endl;
+        }
+    }
+    TipZaposlenog pretvaranje(string c)
+    {
+        if(c=="animator"){return animator;}
+        if(c=="cuvar"){return cuvar;}
+        if(c=="prodavac_karata"){return prodavac_karata;}
+        if(c=="pekar"){return pekar;}
+    }
+    string pretvaranje2(TipZaposlenog c)
+    {
+        if(c==animator){return "animator";}
+        if(c==cuvar){return "cuvar";}
+        if(c==prodavac_karata){return "prodavac karata";}
+        if(c==pekar){return "pekar";}
+    }
+    bool pretrazuje_osobe(int id)
+    {
+        for(auto it=osobe.begin(); it<osobe.end(); it++)
+        {
+            if(it->getID()==id)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    string vraca_ime(int id)
+    {
+        for(auto it=osobe.begin(); it<osobe.end(); it++)
+        {
+            if(it->getID()==id)
+            {
+                return it->getIme();
+            }
+        }
+    }
+    string vraca_prezime(int id)
+    {
+        for(auto it=osobe.begin(); it<osobe.end(); it++)
+        {
+            if(it->getID()==id)
+            {
+                return it->getPrezime();
+            }
+        }
+    }
+    int vraca_godine(int id)
+    {
+        for(auto it=osobe.begin(); it<osobe.end(); it++)
+        {
+            if(it->getID()==id)
+            {
+                return it->getGodine();
+            }
+        }
+    }
 
     void ispis_zaposlenih()
     {
@@ -563,6 +599,9 @@ void zaposljavanje()
         {
             out<<*it;
         }
+        out<<endl;
+        out<<"Broj sou programa u zabavnom parku je:";
+        out<<z.getProgrami().size();
         out<<endl;
         out<<"Zaposleni vaseg zabavnog parka su: "<<endl<<endl;
         if(z.zaposleni.size()==0)

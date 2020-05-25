@@ -19,6 +19,11 @@ public:
     Zaposleni(string i, string pr, int g, int ide, int p, TipZaposlenog t, unsigned po, unsigned k ):Osoba(i, pr, g, ide), plata(p), tip(t){rv.pocetak=po, rv.kraj=k;}
     Zaposleni(const Zaposleni &z):Osoba(z), plata(z.plata), tip(z.tip), rv(z.rv){}
 
+    int getPlata()const{return plata;}
+    TipZaposlenog getTip()const{return tip;}
+    unsigned getPocetak()const{return rv.pocetak;}
+    unsigned getKraj()const{return rv.kraj;}
+
     bool dodeli_kartu(Posetilac &p, Karta &k)
     {
         if(p.getGodine()<16)
@@ -51,7 +56,6 @@ public:
         rv.kraj=k;
 
     }*/
-    TipZaposlenog getTip()const {return tip;}
 
     friend ostream& operator<<(ostream& i, const Zaposleni& z)
     {

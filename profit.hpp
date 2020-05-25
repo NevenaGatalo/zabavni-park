@@ -8,11 +8,8 @@ private:
     double kolicina;
     static double ukupnaKol;
 public:
+    Profit ():kolicina(500){datum.dan=5;datum.mesec=6;datum.godina=2020;}
     static double getUkupnaKol(){return ukupnaKol;}
-    /*bool promeni_profit()
-    {
-
-    }*/
 
 };
 double Profit :: ukupnaKol=0;

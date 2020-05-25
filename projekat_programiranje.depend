@@ -33,49 +33,44 @@
 	"hrana.hpp"
 	"sou_program.hpp"
 
-1590187975 source:c:\users\servis\desktop\githubprojects\zabavni-park\main.cpp
+1590410863 source:c:\users\servis\desktop\githubprojects\zabavni-park\main.cpp
 	<iostream>
-	"karta.hpp"
-	"zabavni_park.hpp"
-	"profit.hpp"
-	"vreme.hpp"
-	"osoba.hpp"
-	"posetilac.hpp"
-	"zaposleni.hpp"
 	<fstream>
 	<vector>
 	<cstring>
 	<cstdlib>
 	<conio.h>
-	"funkcije.hpp"
+	"zabavni_park.hpp"
+	"profit.hpp"
+	"vreme.hpp"
+	"posetilac.hpp"
+	"zaposleni.hpp"
 
-1589736546 c:\users\servis\desktop\githubprojects\zabavni-park\karta.hpp
-	<iostream>
+1590409338 c:\users\servis\desktop\githubprojects\zabavni-park\karta.hpp
 
-1590186959 c:\users\servis\desktop\githubprojects\zabavni-park\zabavni_park.hpp
+1590409301 c:\users\servis\desktop\githubprojects\zabavni-park\zabavni_park.hpp
 	"voznje.hpp"
 	"hrana.hpp"
 	"sou_program.hpp"
-	"vreme.hpp"
 	"zaposleni.hpp"
 	<vector>
-	<iostream>
+	<windows.h>
 
 1589546381 c:\users\servis\desktop\githubprojects\zabavni-park\voznje.hpp
 	"vreme.hpp"
 
 1590102754 c:\users\servis\desktop\githubprojects\zabavni-park\vreme.hpp
 
-1589062928 c:\users\servis\desktop\githubprojects\zabavni-park\hrana.hpp
+1590409338 c:\users\servis\desktop\githubprojects\zabavni-park\hrana.hpp
 
-1590179113 c:\users\servis\desktop\githubprojects\zabavni-park\sou_program.hpp
+1590409263 c:\users\servis\desktop\githubprojects\zabavni-park\sou_program.hpp
 	<vector>
 	"zaposleni.hpp"
 	"funkcije.hpp"
 
-1589065485 c:\users\servis\desktop\githubprojects\zabavni-park\profit.hpp
+1590259392 c:\users\servis\desktop\githubprojects\zabavni-park\profit.hpp
 
-1590149773 c:\users\servis\desktop\githubprojects\zabavni-park\osoba.hpp
+1590409338 c:\users\servis\desktop\githubprojects\zabavni-park\osoba.hpp
 	<fstream>
 
 1589736546 c:\users\servis\desktop\githubprojects\zabavni-park\posetilac.hpp
@@ -83,8 +78,8 @@
 	"osoba.hpp"
 	"karta.hpp"
 
-1590179961 c:\users\servis\desktop\githubprojects\zabavni-park\zaposleni.hpp
+1590257063 c:\users\servis\desktop\githubprojects\zabavni-park\zaposleni.hpp
 	"posetilac.hpp"
 
-1590002523 c:\users\servis\desktop\githubprojects\zabavni-park\funkcije.hpp
+1590408605 c:\users\servis\desktop\githubprojects\zabavni-park\funkcije.hpp
 
