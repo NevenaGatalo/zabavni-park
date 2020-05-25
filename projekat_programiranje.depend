@@ -33,10 +33,11 @@
 	"hrana.hpp"
 	"sou_program.hpp"
 
-1590448699 source:c:\users\servis\desktop\githubprojects\zabavni-park\main.cpp
+1590451838 source:c:\users\servis\desktop\githubprojects\zabavni-park\main.cpp
 	<iostream>
 	<fstream>
 	<vector>
+	<string>
 	"hrana.hpp"
 	"zabavni_park.hpp"
 	"profit.hpp"
@@ -45,7 +46,7 @@
 
 1590409338 c:\users\servis\desktop\githubprojects\zabavni-park\karta.hpp
 
-1590448271 c:\users\servis\desktop\githubprojects\zabavni-park\zabavni_park.hpp
+1590451820 c:\users\servis\desktop\githubprojects\zabavni-park\zabavni_park.hpp
 	"voznje.hpp"
 	"sou_program.hpp"
 	<vector>
