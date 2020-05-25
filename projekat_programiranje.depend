@@ -33,26 +33,21 @@
 	"hrana.hpp"
 	"sou_program.hpp"
 
-1590410863 source:c:\users\servis\desktop\githubprojects\zabavni-park\main.cpp
+1590432854 source:c:\users\servis\desktop\githubprojects\zabavni-park\main.cpp
 	<iostream>
 	<fstream>
 	<vector>
-	<cstring>
-	<cstdlib>
-	<conio.h>
+	"hrana.hpp"
 	"zabavni_park.hpp"
 	"profit.hpp"
-	"vreme.hpp"
 	"posetilac.hpp"
 	"zaposleni.hpp"
 
 1590409338 c:\users\servis\desktop\githubprojects\zabavni-park\karta.hpp
 
-1590409301 c:\users\servis\desktop\githubprojects\zabavni-park\zabavni_park.hpp
+1590420492 c:\users\servis\desktop\githubprojects\zabavni-park\zabavni_park.hpp
 	"voznje.hpp"
-	"hrana.hpp"
 	"sou_program.hpp"
-	"zaposleni.hpp"
 	<vector>
 	<windows.h>
 
@@ -70,7 +65,7 @@
 
 1590259392 c:\users\servis\desktop\githubprojects\zabavni-park\profit.hpp
 
-1590409338 c:\users\servis\desktop\githubprojects\zabavni-park\osoba.hpp
+1590412190 c:\users\servis\desktop\githubprojects\zabavni-park\osoba.hpp
 	<fstream>
 
 1589736546 c:\users\servis\desktop\githubprojects\zabavni-park\posetilac.hpp

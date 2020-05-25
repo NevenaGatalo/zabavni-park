@@ -1,4 +1,6 @@
-Ime6,Prezime4,34,2
-Ime6,Prezime4,34,6
-Ime6,Prezime4,34,8
-
+Anastasija,Kirus,18,1
+Isidora,Malivuk,32,2
+Mihailo,Miljkovic,50,3
+Mia,Milovic,20,4
+Lenka,Amanovic,19,5
+Danilo,Ivanovic,30,6

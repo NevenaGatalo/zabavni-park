@@ -1,12 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <cstring>
-#include <cstdlib>
-#include <conio.h>
 
 using namespace std;
 
+#include "hrana.hpp"
 #include "zabavni_park.hpp"
 #include "profit.hpp"
 #include "posetilac.hpp"
@@ -14,43 +12,37 @@ using namespace std;
 
 int main()
 {
-    ///glavna funkcionalnost je pravljenje i menjanje zabavnog parka
-    ///sto ukljucuje i pravjenje i menjanje sou programa i zaposljavanje ljudi
-
     int a;
     ZabavniPark zp;
+    zp.dodajOsobe();
     Sou_program s;
-    cout<<"-----------------ZABAVNI PARK-----------------"<<endl;
-    //zp.napravi_park();
+    cout<<"******************************************** DOBRODOSLI U ZABAVNI PARK ************************************************"<<endl;
+    cout<<"--------------------------------------------                           -------------------------------------------------";
+    cout<<"******************************************* NAPRAVITE SVOJ ZABAVNI PARK ************************************************"<<endl<<endl;
+    zp.napravi_park();
     do{
-    cout<<"-----------------MENI-----------------"<<endl<<endl;
-    cout<<"1. KREIRAJ NOVI ZABAVNI PARK"<<endl;
-    cout<<"2. PROMENI ZABAVNI PARK"<<endl;
-    cout<<"3. ZAPOSLI NEKOGA"<<endl;
-    cout<<"4. NAPRAVI SOU PROGRAM"<<endl;
-    cout<<"5. PROMENI SVOJ SOU PROGRAM"<<endl;
-    cout<<"10. KRAJ"<<endl;
+    cout<<"||-----------------MENI-----------------||"<<endl<<endl;
+    cout<<"1. PROMENI ZABAVNI PARK"<<endl;
+    cout<<"2. ZAPOSLI NEKOGA"<<endl;
+    cout<<"3. NAPRAVI SOU PROGRAM"<<endl;
+    cout<<"4. PROMENI SVOJ SOU PROGRAM"<<endl;
+    cout<<"5. KRAJ"<<endl;
     cin>>a;
-    if(a==10){break;}
-
+    if(a==5){break;}
     if(a==1)
-    {
-        zp.napravi_park();
-    }
-    if(a==2)
     {
         zp.menja_zp();
     }
-    if(a==3)
+    if(a==2)
     {
         zp.zaposljavanje();
     }
-    if(a==4)
+    if(a==3)
     {
         s.napravi_program();
         zp.setProgrami(s);
     }
-    if(a==5)
+    if(a==4)
     {
         s.menja_program();
     }

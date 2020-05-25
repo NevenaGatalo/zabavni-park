@@ -1,3 +1,1 @@
 
-Ime6,Prezime4,34,3,6000,animator,7-7
-Ime6,Prezime4,34,7,45,pekar,7-7
