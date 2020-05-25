@@ -2,7 +2,6 @@
 #define ZABAVNI_PARK_HPP_INCLUDED
 #include"voznje.hpp"
 #include"sou_program.hpp"
-//#include "zaposleni.hpp"
 #include <vector>
 #include <windows.h>
 
@@ -65,10 +64,15 @@ public:
         }
     }
     void brise_voznje(){
-            while(ispis_voznji()==false)
+        int b=false; ///da se zna da li se while izvrsio kako bi znao da li da nastavi sa brisanjem
+            while(voznje.size()==0)
             {
+                cout<<"Vas zabavni park nema voznje, molim vas dodajte voznje."<<endl;
+                b=true;
                 unos_voznji();
             }
+            if(b==false)
+            {
             string e;
             cout<<"Koju voznju/voznje zelite da izbrisete?"<<endl;
             cout<<"Kada zelite da prestanete sa brisanjem ispisite: kraj"<<endl<<endl;
@@ -153,23 +157,21 @@ public:
                     }
 
                 }
-                else
+                else if(e!="kraj" && e!="osmica" && e!="tvister"  && e!="bumerang" && e!="katapult" && e!="leptir" && e!="pereca" && e!="tocak" && e!="supermen" && e!="betmen" && e!="vrisak"){
                     cout<<"Ta voznja ne postoji, unesite postojecu voznju:"<<endl;
+                }
             }while(e!="kraj");
         cout<<endl;
+        }
     }
-    bool ispis_voznji()
+    void ispis_voznji()
     {
-        if(voznje.size()==0){cout<<"Niste uneli nijednu voznju"<<endl; return false;}
-        else{
         cout<<"ISPIS VOZNJI U ZABAVNOM PARKU"<<endl<<endl;
         for(auto it=voznje.begin(); it<voznje.end(); it++)
         {
             cout<<"     "<<*it;
         }
         cout<<endl;
-        return true;
-        }
     }
     bool trazenje_i_brisanje (string e, const Voznja &v3)
     {
@@ -232,7 +234,12 @@ public:
     void menja_voznje()
     {
         int k;
-        cout<<"Da li zelite da isbrisete ili unesete voznje u zabavni park?"<<endl;
+        cout<<endl;
+        cout<<"Da li zelite da izbrisete ili unesete voznje u zabavni park?"<<endl<<endl;
+        if(voznje.size()!=0)
+        {
+            ispis_voznji();
+        }
         cout<<"     0 = unos voznji"<<endl;
         cout<<"     1 = brisanje voznji"<<endl;
         cin>>k;
@@ -288,7 +295,6 @@ void zaposljavanje()
     cout<<"Koga zelite da zaposlite?"<<endl;
     cout<<"Ispis osoba za zaposljavanje:"<<endl;
     cout<<endl;
-    //dodajOsobe();
     for(auto it=osobe.begin(); it<osobe.end(); it++)
     {
         cout<<"ISPIS OSOBE"<<endl;
@@ -423,60 +429,79 @@ void zaposljavanje()
             cout<<*it<<endl;
         }
     }
-    friend ostream& operator<<(ostream &out, const ZabavniPark &z)
+    friend ostream& operator<<(ostream &i, const ZabavniPark &z)
     {
-        out<<endl;
-        out<<"ISPIS ZABAVNOG PARKA"<<endl;
-        out<<"Ime: "<<z.getIme()<<endl;
-        out<<"Vreme u vasem zabavnom parku je: "<<z.getVreme()<<endl;
-        out<<"Drzava u kojoj se nalazi vas zabavni park je: ";
-        if(z.getDrzava()==Amerika){out<<"Amerika";}
-        if(z.getDrzava()==Srbija){out<<"Srbija";}
-        if(z.getDrzava()==Kanada){out<<"Kanada";}
-        if(z.getDrzava()==Engleska){out<<"Engleska";}
-        if(z.getDrzava()==Kina){out<<"Kina";}
-        if(z.getDrzava()==Spanija){out<<"Spanija";}
-        if(z.getDrzava()==Japan){out<<"Japan";}
-        if(z.getDrzava()==Francuska){out<<"Francuska";}
-        if(z.getDrzava()==Nemacka){out<<"Nemacka";}
-        if(z.getDrzava()==Danska){out<<"Danska";}
-        if(z.getDrzava()==Svedska){out<<"Svedskaa";}
-        if(z.getDrzava()==Italija){out<<"Italija";}
-        if(z.getDrzava()==Brazil){out<<"Brazil";}
-        if(z.getDrzava()==Meksiko){out<<"Meksiko";}
-        out<<endl;
-        out<<"Voznje vaseg zabavnog parka su: "<<endl<<endl;
+        i<<endl;
+        i<<"ISPIS ZABAVNOG PARKA"<<endl;
+        i<<"Ime: "<<z.getIme()<<endl;
+        i<<"Vreme u vasem zabavnom parku je: "<<z.getVreme()<<endl;
+        i<<"Drzava u kojoj se nalazi vas zabavni park je: ";
+        if(z.getDrzava()==Amerika){i<<"Amerika";}
+        if(z.getDrzava()==Srbija){i<<"Srbija";}
+        if(z.getDrzava()==Kanada){i<<"Kanada";}
+        if(z.getDrzava()==Engleska){i<<"Engleska";}
+        if(z.getDrzava()==Kina){i<<"Kina";}
+        if(z.getDrzava()==Spanija){i<<"Spanija";}
+        if(z.getDrzava()==Japan){i<<"Japan";}
+        if(z.getDrzava()==Francuska){i<<"Francuska";}
+        if(z.getDrzava()==Nemacka){i<<"Nemacka";}
+        if(z.getDrzava()==Danska){i<<"Danska";}
+        if(z.getDrzava()==Svedska){i<<"Svedskaa";}
+        if(z.getDrzava()==Italija){i<<"Italija";}
+        if(z.getDrzava()==Brazil){i<<"Brazil";}
+        if(z.getDrzava()==Meksiko){i<<"Meksiko";}
+        i<<endl;
+        i<<"Voznje vaseg zabavnog parka su: "<<endl<<endl;
         if(z.voznje.size()==0)
         {
-            cout<<"Nema voznji"<<endl;
+            i<<"Nema voznji"<<endl;
         }
         for(auto it=z.voznje.begin(); it<z.voznje.end(); it++)
         {
-            out<<*it;
+            i<<*it;
         }
-        out<<endl;
-        out<<"Broj sou programa u zabavnom parku je:";
-        out<<z.getProgrami().size();
-        out<<endl;
-        out<<"Zaposleni vaseg zabavnog parka su: "<<endl<<endl;
+        i<<endl;
+        i<<"Broj sou programa u zabavnom parku je:";
+        i<<z.getProgrami().size();
+        i<<endl;
+        i<<"Zaposleni vaseg zabavnog parka su: "<<endl<<endl;
         if(z.zaposleni.size()==0)
         {
-            cout<<"Nema zaposlenih"<<endl;
+            i<<"Nema zaposlenih"<<endl;
         }
         for(auto it=z.zaposleni.begin(); it<z.zaposleni.end(); it++)
         {
-            out<<*it;
+            i<<*it;
         }
-        out<<endl;
-        out<<"Posetioci zabavnog parka: "<<endl<<endl;
+        i<<endl;
+        i<<"Posetioci zabavnog parka: "<<endl<<endl;
         citajTxt("posetioci.txt");
-        out<<endl;
-        out<<"Vas zabavni park je: ";
-        if(z.getOtvoren()==true){out<<"otvoren";}
-        if(z.getOtvoren()==false){out<<"zatvoren";}
-        out<<endl;
+        i<<endl;
+        i<<"Vas zabavni park je: ";
+        if(z.getOtvoren()==true){i<<"otvoren";}
+        if(z.getOtvoren()==false){i<<"zatvoren";}
+        i<<endl<<endl;
+        z.ispis_programa();
 
-       return out;
+       return i;
+    }
+    void ispis_programa()const
+    {
+        for(auto it=programi.begin(); it<programi.end(); it++)
+        {
+            cout<<*it;
+        }
+    }
+    Sou_program poredi_programe(string s)
+    {
+        bool g=false;
+        for(auto it=programi.begin(); it<programi.end(); it++)
+        {
+            if(it->getNaziv()==s)
+            {
+                return *it;
+            }
+        }
     }
     void menja_zp()
     {

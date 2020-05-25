@@ -37,6 +37,19 @@ public:
                 unsigned mesec=01,
                 unsigned godina=2020):naziv(naziv), brLjudi(brLjud), tip(tip){vreme.sat=sat; vreme.minuti=minuti; datum.dan=dan; datum.mesec=mesec; datum.godina=godina;}
 
+    Sou_program(const Sou_program &s)
+    {
+        naziv=s.naziv;
+        brLjudi=s.brLjudi;
+        izvodjaci=s.izvodjaci;
+        tip=s.tip;
+        vreme.sat=s.vreme.sat;
+        vreme.minuti=s.vreme.minuti;
+        datum.dan=s.datum.dan;
+        datum.mesec=s.datum.mesec;
+        datum.godina=s.datum.godina;
+    }
+
     string getNaziv()const{return naziv;}
     unsigned getBrLjudi()const{return brLjudi;}
     TipPrograma getTip()const{return tip;}
@@ -51,6 +64,9 @@ public:
         cout<<endl;
         cout<<"Unesite naziv programa:"<<endl;
         cin>>naziv;
+        cout<<endl;
+        cout<<"Unesite max broj gledalaca vaseg programa"<<endl;
+        cin>>brLjudi;
         cout<<endl;
         cout<<"Unesite tip programa"<<endl;
         cout<<"      0 = lutkarska predstava\n      1 = madjionicarska predstava\n      2 = predstava"<<endl;
@@ -81,7 +97,7 @@ public:
         }
         cout<<"Uspesno ste dodali animatore!"<<endl;
         }
-       else //if(ispisi_animatore()==false)
+       else
         {
             cout<<"Morate zaposliti animatore kako bi mogli da ih unesete u sou program"<<endl<<endl;
 
